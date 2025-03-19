@@ -12,13 +12,20 @@ struct ContactRow: View {
     
     var body: some View {
         HStack {
-            Text(contact.initials)
-                .font(.title)
-                .fontWeight(.semibold)
-                .foregroundStyle(.white)
-                .frame(width: 60, height: 60)
-                .background(.tertiary)
-                .clipShape(.circle)
+            Group {
+                if let imageData = contact.imageData, let uiImage = UIImage(data: imageData) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                } else {
+                    Text(contact.initials)
+                        .font(.title)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.white)
+                }
+            }
+            .frame(width: 60, height: 60)
+            .background(.tertiary)
+            .clipShape(.circle)
             
             VStack(alignment: .leading) {
                 Text(contact.fullname)

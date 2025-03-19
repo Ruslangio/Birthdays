@@ -7,5 +7,6 @@
 - SwiftData
 - UserNotifications
 - Strings Catalogs
+- PhotosUI
 
 ## Описание

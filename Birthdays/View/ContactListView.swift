@@ -13,7 +13,7 @@ struct ContactListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Contact.birthday) private var contacts: [Contact]
     
-    @State private var showingAddContactSheet = false
+    @State private var isShowingAddContactSheet = false
     
     var body: some View {
         NavigationStack {
@@ -27,14 +27,15 @@ struct ContactListView: View {
             .toolbar {
                 ToolbarItem {
                     Button {
-                        showingAddContactSheet.toggle()
+                        isShowingAddContactSheet.toggle()
                     } label: {
                         Image(systemName: "plus")
                     }
                 }
             }
-            .sheet(isPresented: $showingAddContactSheet) {
+            .sheet(isPresented: $isShowingAddContactSheet) {
                 AddContactSheet()
+                    .interactiveDismissDisabled()
             }
         }
     }

@@ -21,6 +21,8 @@ struct AddContactSheet: View {
     @State private var surname = ""
     @State private var birthday = Date()
     
+    @State private var isShowingCancelConfirmation = false
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -63,9 +65,7 @@ struct AddContactSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("button.cancel") {
-                        dismiss()
-                    }
+                    Button("button.cancel", action: handleCancel)
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("button.add", action: addContact)
@@ -73,10 +73,26 @@ struct AddContactSheet: View {
                 }
             }
         }
+        .confirmationDialog("dialog.discardContact.title", isPresented: $isShowingCancelConfirmation, titleVisibility: .visible) {
+            Button("button.discardChanges", role: .destructive) {
+                dismiss()
+            }
+            Button("button.continueEditing", role: .cancel) {
+                isShowingCancelConfirmation.toggle()
+            }
+        }
         .task(id: selectedPhoto) {
             if let data = try? await selectedPhoto?.loadTransferable(type: Data.self) {
                 selectedPhotoData = data
             }
+        }
+    }
+    
+    private func handleCancel() {
+        if selectedPhoto != nil || !name.isEmpty || !surname.isEmpty {
+            isShowingCancelConfirmation.toggle()
+        } else {
+            dismiss()
         }
     }
     

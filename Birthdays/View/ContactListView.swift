@@ -17,11 +17,25 @@ struct ContactListView: View {
     
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(contacts) { contact in
-                    ContactRow(contact: contact)
+            Group {
+                if contacts.isEmpty {
+                    ContentUnavailableView {
+                        Label("label.noContacts", systemImage: "person.crop.circle.fill")
+                    } description: {
+                        Text("text.contacts.emptyDescription")
+                    } actions: {
+                        Button("button.createNewContact") {
+                            isShowingAddContactSheet.toggle()
+                        }
+                    }
+                } else {
+                    List {
+                        ForEach(contacts) { contact in
+                            ContactRow(contact: contact)
+                        }
+                        .onDelete(perform: deleteContacts)
+                    }
                 }
-                .onDelete(perform: deleteContacts)
             }
             .navigationTitle("app.name")
             .toolbar {

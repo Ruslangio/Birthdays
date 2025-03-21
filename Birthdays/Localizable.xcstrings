@@ -89,6 +89,28 @@
         }
       }
     },
+    "button.createNewContact" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create New Contact"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea nuovo contatto"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создать новый контакт"
+          }
+        }
+      }
+    },
     "button.discardChanges" : {
       "localizations" : {
         "en" : {
@@ -280,6 +302,28 @@
         }
       }
     },
+    "label.noContacts" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Contacts"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun contatto"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет контактов"
+          }
+        }
+      }
+    },
     "navigation.newContact.title" : {
       "localizations" : {
         "en" : {
@@ -342,6 +386,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Полное имя"
+          }
+        }
+      }
+    },
+    "text.contacts.emptyDescription" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacts you've added will appear here."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I contatti che hai aggiunto verranno visualizzati qui."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Здесь появятся добавленные контакты."
           }
         }
       }

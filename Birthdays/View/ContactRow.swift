@@ -16,6 +16,7 @@ struct ContactRow: View {
                 if let imageData = contact.imageData, let uiImage = UIImage(data: imageData) {
                     Image(uiImage: uiImage)
                         .resizable()
+                        .scaledToFill()
                 } else {
                     Text(contact.initials)
                         .font(.title)

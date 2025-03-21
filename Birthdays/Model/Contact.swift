@@ -16,6 +16,13 @@ final class Contact: Identifiable {
     var birthday: Date
     @Attribute(.externalStorage) var imageData: Data?
     
+    init(name: String, surname: String, birthday: Date, imageData: Data? = nil) {
+        self.name = name
+        self.surname = surname
+        self.birthday = birthday
+        self.imageData = imageData
+    }
+    
     var fullname: String {
         name + " " + surname
     }
@@ -43,14 +50,7 @@ final class Contact: Identifiable {
         ) else {
             return 0
         }
-
+        
         return calendar.dateComponents([.day], from: today, to: nextBirthday).day ?? 0
-    }
-    
-    init(name: String, surname: String, birthday: Date, imageData: Data? = nil) {
-        self.name = name
-        self.surname = surname
-        self.birthday = birthday
-        self.imageData = imageData
     }
 }
